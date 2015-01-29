@@ -1,7 +1,10 @@
 # CoinControl
 Everyone, who mine on P2Pool or solo, or use many faucets, sometimes hit a wall: how to send many coins in one transaction and not pay huge fee?
+
 I hit this problem, when I sent few hundred transactions to exchange and kill them wallet for week :P
+
 Because most of altcoins not have coin control form latest Bitcoin Core client, so I wrote .net app that use RPC calls to access wallet and create transactions as you like.
+
 First, you need to enable RPC access to your coin. Edit *coin.conf file in data directory, it will need:
 
 server=1
