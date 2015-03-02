@@ -63,7 +63,7 @@ namespace CoinControl
                     if (strResponse != "") { log(strResponse); }
             }
 
-            if (strResponse != string.Empty)
+            if (strResponse != string.Empty && strCommand != "listunspent")
             {
                 log(strResponse);
             }
@@ -74,10 +74,10 @@ namespace CoinControl
         private void btGet_Click(object sender, EventArgs e)
         {
             tbLog.Text = "";
-            string resp = SendCommand("listunspent");
             log("Loading inputs, it might take a while...");
             btGet.Enabled = false;
             Application.DoEvents();
+            string resp = SendCommand("listunspent");
             if (resp != "")
             {
                 dynamic d = JsonConvert.DeserializeObject(resp);
