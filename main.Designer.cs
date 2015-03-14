@@ -32,11 +32,6 @@
             this.btSign = new System.Windows.Forms.Button();
             this.btSend = new System.Windows.Forms.Button();
             this.dgvIn = new System.Windows.Forms.DataGridView();
-            this.take = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.confirmations = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vout = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbSent = new System.Windows.Forms.TextBox();
             this.tbFee = new System.Windows.Forms.TextBox();
             this.tbOut = new System.Windows.Forms.TextBox();
@@ -44,6 +39,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvOut = new System.Windows.Forms.DataGridView();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.outAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btPrepare = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btConnect = new System.Windows.Forms.Button();
@@ -51,11 +48,21 @@
             this.tbUser = new System.Windows.Forms.TextBox();
             this.tbIp = new System.Windows.Forms.TextBox();
             this.tbLog = new System.Windows.Forms.TextBox();
-            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.outAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nudSelect = new System.Windows.Forms.NumericUpDown();
+            this.btSelect = new System.Windows.Forms.Button();
+            this.bdDeselect = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btSelectAll = new System.Windows.Forms.Button();
+            this.take = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.confirmations = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Addresss = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vout = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOut)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSelect)).BeginInit();
             this.SuspendLayout();
             // 
             // btGet
@@ -70,7 +77,7 @@
             // 
             // btSign
             // 
-            this.btSign.Location = new System.Drawing.Point(690, 373);
+            this.btSign.Location = new System.Drawing.Point(411, 374);
             this.btSign.Name = "btSign";
             this.btSign.Size = new System.Drawing.Size(75, 23);
             this.btSign.TabIndex = 1;
@@ -80,7 +87,7 @@
             // 
             // btSend
             // 
-            this.btSend.Location = new System.Drawing.Point(771, 373);
+            this.btSend.Location = new System.Drawing.Point(492, 374);
             this.btSend.Name = "btSend";
             this.btSend.Size = new System.Drawing.Size(75, 23);
             this.btSend.TabIndex = 2;
@@ -97,51 +104,15 @@
             this.take,
             this.amount,
             this.confirmations,
+            this.Addresss,
             this.txid,
             this.vout});
             this.dgvIn.Location = new System.Drawing.Point(12, 41);
             this.dgvIn.Name = "dgvIn";
-            this.dgvIn.Size = new System.Drawing.Size(834, 221);
+            this.dgvIn.Size = new System.Drawing.Size(868, 221);
             this.dgvIn.TabIndex = 3;
             this.dgvIn.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvIn_CellMouseUp);
             this.dgvIn.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIn_CellValueChanged);
-            // 
-            // take
-            // 
-            this.take.HeaderText = "take";
-            this.take.Name = "take";
-            // 
-            // amount
-            // 
-            this.amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.amount.HeaderText = "amount";
-            this.amount.Name = "amount";
-            this.amount.ReadOnly = true;
-            this.amount.Width = 67;
-            // 
-            // confirmations
-            // 
-            this.confirmations.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.confirmations.HeaderText = "confirmations";
-            this.confirmations.Name = "confirmations";
-            this.confirmations.ReadOnly = true;
-            this.confirmations.Width = 94;
-            // 
-            // txid
-            // 
-            this.txid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.txid.HeaderText = "TX ID";
-            this.txid.Name = "txid";
-            this.txid.ReadOnly = true;
-            this.txid.Width = 60;
-            // 
-            // vout
-            // 
-            this.vout.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.vout.HeaderText = "vout";
-            this.vout.Name = "vout";
-            this.vout.ReadOnly = true;
-            this.vout.Width = 53;
             // 
             // tbSent
             // 
@@ -202,13 +173,26 @@
             this.outAmount});
             this.dgvOut.Location = new System.Drawing.Point(12, 268);
             this.dgvOut.Name = "dgvOut";
-            this.dgvOut.Size = new System.Drawing.Size(834, 79);
+            this.dgvOut.Size = new System.Drawing.Size(868, 79);
             this.dgvOut.TabIndex = 10;
             this.dgvOut.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOut_CellValueChanged);
             // 
+            // Address
+            // 
+            this.Address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Address.HeaderText = "Address";
+            this.Address.MaxInputLength = 50;
+            this.Address.MinimumWidth = 100;
+            this.Address.Name = "Address";
+            // 
+            // outAmount
+            // 
+            this.outAmount.HeaderText = "amount";
+            this.outAmount.Name = "outAmount";
+            // 
             // btPrepare
             // 
-            this.btPrepare.Location = new System.Drawing.Point(609, 373);
+            this.btPrepare.Location = new System.Drawing.Point(330, 373);
             this.btPrepare.Name = "btPrepare";
             this.btPrepare.Size = new System.Drawing.Size(75, 23);
             this.btPrepare.TabIndex = 11;
@@ -267,27 +251,127 @@
             this.tbLog.Multiline = true;
             this.tbLog.Name = "tbLog";
             this.tbLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbLog.Size = new System.Drawing.Size(834, 132);
+            this.tbLog.Size = new System.Drawing.Size(868, 132);
             this.tbLog.TabIndex = 13;
             // 
-            // Address
+            // nudSelect
             // 
-            this.Address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Address.HeaderText = "Address";
-            this.Address.MaxInputLength = 50;
-            this.Address.MinimumWidth = 100;
-            this.Address.Name = "Address";
+            this.nudSelect.Location = new System.Drawing.Point(416, 16);
+            this.nudSelect.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.nudSelect.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudSelect.Name = "nudSelect";
+            this.nudSelect.Size = new System.Drawing.Size(61, 20);
+            this.nudSelect.TabIndex = 14;
+            this.nudSelect.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudSelect.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
             // 
-            // outAmount
+            // btSelect
             // 
-            this.outAmount.HeaderText = "amount";
-            this.outAmount.Name = "outAmount";
+            this.btSelect.Location = new System.Drawing.Point(483, 12);
+            this.btSelect.Name = "btSelect";
+            this.btSelect.Size = new System.Drawing.Size(75, 23);
+            this.btSelect.TabIndex = 15;
+            this.btSelect.Text = "Select";
+            this.btSelect.UseVisualStyleBackColor = true;
+            this.btSelect.Click += new System.EventHandler(this.btSelect_Click);
+            // 
+            // bdDeselect
+            // 
+            this.bdDeselect.Location = new System.Drawing.Point(161, 12);
+            this.bdDeselect.Name = "bdDeselect";
+            this.bdDeselect.Size = new System.Drawing.Size(75, 23);
+            this.bdDeselect.TabIndex = 16;
+            this.bdDeselect.Text = "Deselect all";
+            this.bdDeselect.UseVisualStyleBackColor = true;
+            this.bdDeselect.Click += new System.EventHandler(this.bdDeselect_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(354, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 13);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Select first";
+            // 
+            // btSelectAll
+            // 
+            this.btSelectAll.Location = new System.Drawing.Point(242, 12);
+            this.btSelectAll.Name = "btSelectAll";
+            this.btSelectAll.Size = new System.Drawing.Size(75, 23);
+            this.btSelectAll.TabIndex = 18;
+            this.btSelectAll.Text = "Select all";
+            this.btSelectAll.UseVisualStyleBackColor = true;
+            this.btSelectAll.Click += new System.EventHandler(this.btSelectAll_Click);
+            // 
+            // take
+            // 
+            this.take.HeaderText = "take";
+            this.take.Name = "take";
+            this.take.Width = 30;
+            // 
+            // amount
+            // 
+            this.amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.amount.HeaderText = "amount";
+            this.amount.Name = "amount";
+            this.amount.ReadOnly = true;
+            this.amount.Width = 67;
+            // 
+            // confirmations
+            // 
+            this.confirmations.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.confirmations.HeaderText = "confirmations";
+            this.confirmations.Name = "confirmations";
+            this.confirmations.ReadOnly = true;
+            this.confirmations.Width = 94;
+            // 
+            // Addresss
+            // 
+            this.Addresss.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Addresss.HeaderText = "Address";
+            this.Addresss.Name = "Addresss";
+            this.Addresss.ReadOnly = true;
+            this.Addresss.Width = 70;
+            // 
+            // txid
+            // 
+            this.txid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.txid.HeaderText = "TX ID";
+            this.txid.Name = "txid";
+            this.txid.ReadOnly = true;
+            this.txid.Width = 60;
+            // 
+            // vout
+            // 
+            this.vout.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.vout.HeaderText = "vout";
+            this.vout.Name = "vout";
+            this.vout.ReadOnly = true;
+            this.vout.Width = 53;
             // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(858, 546);
+            this.ClientSize = new System.Drawing.Size(892, 546);
+            this.Controls.Add(this.btSelectAll);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.bdDeselect);
+            this.Controls.Add(this.btSelect);
+            this.Controls.Add(this.nudSelect);
             this.Controls.Add(this.tbLog);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btPrepare);
@@ -308,6 +392,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvOut)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSelect)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,13 +417,19 @@
         private System.Windows.Forms.TextBox tbPass;
         private System.Windows.Forms.TextBox tbUser;
         private System.Windows.Forms.TextBox tbIp;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn take;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn confirmations;
-        private System.Windows.Forms.DataGridViewTextBoxColumn txid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vout;
         private System.Windows.Forms.TextBox tbLog;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
         private System.Windows.Forms.DataGridViewTextBoxColumn outAmount;
+        private System.Windows.Forms.NumericUpDown nudSelect;
+        private System.Windows.Forms.Button btSelect;
+        private System.Windows.Forms.Button bdDeselect;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btSelectAll;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn take;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn confirmations;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Addresss;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vout;
     }
 }

@@ -84,7 +84,7 @@ namespace CoinControl
                 dgvIn.Rows.Clear();
                 foreach (dynamic i in d.result)
                 {
-                    dgvIn.Rows.Add(false, i.amount, i.confirmations, i.txid, i.vout);
+                    dgvIn.Rows.Add(false, i.amount, i.confirmations, i.address, i.txid, i.vout);
                 }
                 log("Data loaded. Sort inputs and choose!");
             }
@@ -141,8 +141,8 @@ namespace CoinControl
                 {
                     if (Convert.ToBoolean(d.Cells[0].Value) == true)
                     {
-                        string tx = d.Cells[3].Value.ToString();
-                        string vout = d.Cells[4].Value.ToString();
+                        string tx = d.Cells[4].Value.ToString();
+                        string vout = d.Cells[5].Value.ToString();
                         i += "{\"txid\":\"" + tx + "\",\"vout\":" + vout + "},";
                     }
                 }
@@ -274,6 +274,38 @@ namespace CoinControl
             }
             tbOut.Text = amount.ToString();
             tbFee.Text = String.Format(CultureInfo.InvariantCulture, "{0:0.00000000}", (Convert.ToDouble(tbSent.Text) - Convert.ToDouble(tbOut.Text)).ToString());
+        }
+
+        private void bdDeselect_Click(object sender, EventArgs e)
+        {
+            foreach(DataGridViewRow d in dgvIn.Rows)
+            {
+                if (Convert.ToBoolean(d.Cells[0].Value) == true)
+                { d.Cells[0].Value =false; }
+            }
+        }
+
+        private void btSelectAll_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow d in dgvIn.Rows)
+            {
+                if (Convert.ToBoolean(d.Cells[0].Value) == false)
+                { d.Cells[0].Value = true; }
+            }
+        }
+
+        private void btSelect_Click(object sender, EventArgs e)
+        {
+            int cnt = 0;
+            foreach (DataGridViewRow d in dgvIn.Rows)
+            {
+                if (Convert.ToBoolean(d.Cells[0].Value) == false)
+                {
+                    d.Cells[0].Value = true;
+                    cnt += 1;
+                }
+                if (cnt >= nudSelect.Value) { break; }
+            }
         }
     }
 }
