@@ -32,6 +32,12 @@
             this.btSign = new System.Windows.Forms.Button();
             this.btSend = new System.Windows.Forms.Button();
             this.dgvIn = new System.Windows.Forms.DataGridView();
+            this.take = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.confirmations = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Addresss = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vout = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbSent = new System.Windows.Forms.TextBox();
             this.tbFee = new System.Windows.Forms.TextBox();
             this.tbOut = new System.Windows.Forms.TextBox();
@@ -53,12 +59,6 @@
             this.bdDeselect = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.btSelectAll = new System.Windows.Forms.Button();
-            this.take = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.confirmations = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Addresss = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vout = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOut)).BeginInit();
             this.panel1.SuspendLayout();
@@ -113,6 +113,52 @@
             this.dgvIn.TabIndex = 3;
             this.dgvIn.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvIn_CellMouseUp);
             this.dgvIn.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIn_CellValueChanged);
+            // 
+            // take
+            // 
+            this.take.HeaderText = "take";
+            this.take.Name = "take";
+            this.take.Width = 30;
+            // 
+            // amount
+            // 
+            this.amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.amount.HeaderText = "amount";
+            this.amount.Name = "amount";
+            this.amount.ReadOnly = true;
+            this.amount.Width = 67;
+            // 
+            // confirmations
+            // 
+            this.confirmations.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.confirmations.HeaderText = "confirmations";
+            this.confirmations.Name = "confirmations";
+            this.confirmations.ReadOnly = true;
+            this.confirmations.Width = 94;
+            // 
+            // Addresss
+            // 
+            this.Addresss.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Addresss.HeaderText = "Address";
+            this.Addresss.Name = "Addresss";
+            this.Addresss.ReadOnly = true;
+            this.Addresss.Width = 70;
+            // 
+            // txid
+            // 
+            this.txid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.txid.HeaderText = "TX ID";
+            this.txid.Name = "txid";
+            this.txid.ReadOnly = true;
+            this.txid.Width = 60;
+            // 
+            // vout
+            // 
+            this.vout.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.vout.HeaderText = "vout";
+            this.vout.Name = "vout";
+            this.vout.ReadOnly = true;
+            this.vout.Width = 53;
             // 
             // tbSent
             // 
@@ -258,7 +304,7 @@
             // 
             this.nudSelect.Location = new System.Drawing.Point(416, 16);
             this.nudSelect.Maximum = new decimal(new int[] {
-            500,
+            1000,
             0,
             0,
             0});
@@ -315,52 +361,6 @@
             this.btSelectAll.Text = "Select all";
             this.btSelectAll.UseVisualStyleBackColor = true;
             this.btSelectAll.Click += new System.EventHandler(this.btSelectAll_Click);
-            // 
-            // take
-            // 
-            this.take.HeaderText = "take";
-            this.take.Name = "take";
-            this.take.Width = 30;
-            // 
-            // amount
-            // 
-            this.amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.amount.HeaderText = "amount";
-            this.amount.Name = "amount";
-            this.amount.ReadOnly = true;
-            this.amount.Width = 67;
-            // 
-            // confirmations
-            // 
-            this.confirmations.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.confirmations.HeaderText = "confirmations";
-            this.confirmations.Name = "confirmations";
-            this.confirmations.ReadOnly = true;
-            this.confirmations.Width = 94;
-            // 
-            // Addresss
-            // 
-            this.Addresss.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Addresss.HeaderText = "Address";
-            this.Addresss.Name = "Addresss";
-            this.Addresss.ReadOnly = true;
-            this.Addresss.Width = 70;
-            // 
-            // txid
-            // 
-            this.txid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.txid.HeaderText = "TX ID";
-            this.txid.Name = "txid";
-            this.txid.ReadOnly = true;
-            this.txid.Width = 60;
-            // 
-            // vout
-            // 
-            this.vout.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.vout.HeaderText = "vout";
-            this.vout.Name = "vout";
-            this.vout.ReadOnly = true;
-            this.vout.Width = 53;
             // 
             // main
             // 

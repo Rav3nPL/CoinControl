@@ -76,6 +76,7 @@ namespace CoinControl
             tbLog.Text = "";
             log("Loading inputs, it might take a while...");
             btGet.Enabled = false;
+            dgvIn.Hide();
             Application.DoEvents();
             string resp = SendCommand("listunspent");
             if (resp != "")
@@ -92,6 +93,8 @@ namespace CoinControl
             {
                 log("Oops!");
             }
+            log("Loaded " + dgvIn.RowCount.ToString() + " inputs.");
+            dgvIn.Show();
             btGet.Enabled = true;
         }
         
