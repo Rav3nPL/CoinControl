@@ -1,6 +1,6 @@
 ﻿namespace CoinControl
 {
-    partial class main
+    partial class Main
     {
         /// <summary>
         /// Required designer variable.
@@ -67,33 +67,36 @@
             // 
             // btGet
             // 
-            this.btGet.Location = new System.Drawing.Point(12, 12);
+            this.btGet.Location = new System.Drawing.Point(16, 15);
+            this.btGet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btGet.Name = "btGet";
-            this.btGet.Size = new System.Drawing.Size(75, 23);
+            this.btGet.Size = new System.Drawing.Size(100, 28);
             this.btGet.TabIndex = 0;
             this.btGet.Text = "Get inputs";
             this.btGet.UseVisualStyleBackColor = true;
-            this.btGet.Click += new System.EventHandler(this.btGet_Click);
+            this.btGet.Click += new System.EventHandler(this.BtGet_Click);
             // 
             // btSign
             // 
-            this.btSign.Location = new System.Drawing.Point(411, 374);
+            this.btSign.Location = new System.Drawing.Point(548, 460);
+            this.btSign.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btSign.Name = "btSign";
-            this.btSign.Size = new System.Drawing.Size(75, 23);
+            this.btSign.Size = new System.Drawing.Size(100, 28);
             this.btSign.TabIndex = 1;
             this.btSign.Text = "Sign TX";
             this.btSign.UseVisualStyleBackColor = true;
-            this.btSign.Click += new System.EventHandler(this.btSign_Click);
+            this.btSign.Click += new System.EventHandler(this.BtSign_Click);
             // 
             // btSend
             // 
-            this.btSend.Location = new System.Drawing.Point(492, 374);
+            this.btSend.Location = new System.Drawing.Point(656, 460);
+            this.btSend.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btSend.Name = "btSend";
-            this.btSend.Size = new System.Drawing.Size(75, 23);
+            this.btSend.Size = new System.Drawing.Size(100, 28);
             this.btSend.TabIndex = 2;
             this.btSend.Text = "Send TX";
             this.btSend.UseVisualStyleBackColor = true;
-            this.btSend.Click += new System.EventHandler(this.btSend_Click);
+            this.btSend.Click += new System.EventHandler(this.BtSend_Click);
             // 
             // dgvIn
             // 
@@ -107,12 +110,13 @@
             this.Addresss,
             this.txid,
             this.vout});
-            this.dgvIn.Location = new System.Drawing.Point(12, 41);
+            this.dgvIn.Location = new System.Drawing.Point(16, 50);
+            this.dgvIn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvIn.Name = "dgvIn";
-            this.dgvIn.Size = new System.Drawing.Size(868, 221);
+            this.dgvIn.Size = new System.Drawing.Size(1157, 272);
             this.dgvIn.TabIndex = 3;
-            this.dgvIn.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvIn_CellMouseUp);
-            this.dgvIn.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIn_CellValueChanged);
+            this.dgvIn.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvIn_CellMouseUp);
+            this.dgvIn.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvIn_CellValueChanged);
             // 
             // take
             // 
@@ -126,7 +130,7 @@
             this.amount.HeaderText = "amount";
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;
-            this.amount.Width = 67;
+            this.amount.Width = 84;
             // 
             // confirmations
             // 
@@ -134,7 +138,7 @@
             this.confirmations.HeaderText = "confirmations";
             this.confirmations.Name = "confirmations";
             this.confirmations.ReadOnly = true;
-            this.confirmations.Width = 94;
+            this.confirmations.Width = 121;
             // 
             // Addresss
             // 
@@ -142,7 +146,7 @@
             this.Addresss.HeaderText = "Address";
             this.Addresss.Name = "Addresss";
             this.Addresss.ReadOnly = true;
-            this.Addresss.Width = 70;
+            this.Addresss.Width = 89;
             // 
             // txid
             // 
@@ -158,56 +162,65 @@
             this.vout.HeaderText = "vout";
             this.vout.Name = "vout";
             this.vout.ReadOnly = true;
-            this.vout.Width = 53;
+            this.vout.Width = 64;
             // 
             // tbSent
             // 
-            this.tbSent.Location = new System.Drawing.Point(12, 376);
+            this.tbSent.Location = new System.Drawing.Point(16, 463);
+            this.tbSent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbSent.Name = "tbSent";
-            this.tbSent.Size = new System.Drawing.Size(100, 20);
+            this.tbSent.ReadOnly = true;
+            this.tbSent.Size = new System.Drawing.Size(132, 22);
             this.tbSent.TabIndex = 4;
             this.tbSent.Text = "0";
             // 
             // tbFee
             // 
-            this.tbFee.Location = new System.Drawing.Point(118, 376);
+            this.tbFee.Location = new System.Drawing.Point(157, 463);
+            this.tbFee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbFee.Name = "tbFee";
-            this.tbFee.Size = new System.Drawing.Size(100, 20);
+            this.tbFee.ReadOnly = true;
+            this.tbFee.Size = new System.Drawing.Size(132, 22);
             this.tbFee.TabIndex = 5;
             this.tbFee.Text = "0";
             // 
             // tbOut
             // 
-            this.tbOut.Location = new System.Drawing.Point(224, 376);
+            this.tbOut.Location = new System.Drawing.Point(299, 463);
+            this.tbOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbOut.Name = "tbOut";
-            this.tbOut.Size = new System.Drawing.Size(100, 20);
+            this.tbOut.ReadOnly = true;
+            this.tbOut.Size = new System.Drawing.Size(132, 22);
             this.tbOut.TabIndex = 6;
             this.tbOut.Text = "0";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 360);
+            this.label1.Location = new System.Drawing.Point(16, 443);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.Size = new System.Drawing.Size(64, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "Total INs";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(118, 360);
+            this.label2.Location = new System.Drawing.Point(157, 443);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(25, 13);
+            this.label2.Size = new System.Drawing.Size(32, 17);
             this.label2.TabIndex = 8;
             this.label2.Text = "Fee";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(221, 360);
+            this.label3.Location = new System.Drawing.Point(295, 443);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 13);
+            this.label3.Size = new System.Drawing.Size(81, 17);
             this.label3.TabIndex = 9;
             this.label3.Text = "Total OUTs";
             // 
@@ -217,11 +230,12 @@
             this.dgvOut.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Address,
             this.outAmount});
-            this.dgvOut.Location = new System.Drawing.Point(12, 268);
+            this.dgvOut.Location = new System.Drawing.Point(16, 330);
+            this.dgvOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvOut.Name = "dgvOut";
-            this.dgvOut.Size = new System.Drawing.Size(868, 79);
+            this.dgvOut.Size = new System.Drawing.Size(1157, 97);
             this.dgvOut.TabIndex = 10;
-            this.dgvOut.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOut_CellValueChanged);
+            this.dgvOut.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvOut_CellValueChanged);
             // 
             // Address
             // 
@@ -238,13 +252,14 @@
             // 
             // btPrepare
             // 
-            this.btPrepare.Location = new System.Drawing.Point(330, 373);
+            this.btPrepare.Location = new System.Drawing.Point(440, 459);
+            this.btPrepare.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btPrepare.Name = "btPrepare";
-            this.btPrepare.Size = new System.Drawing.Size(75, 23);
+            this.btPrepare.Size = new System.Drawing.Size(100, 28);
             this.btPrepare.TabIndex = 11;
             this.btPrepare.Text = "Prepare TX";
             this.btPrepare.UseVisualStyleBackColor = true;
-            this.btPrepare.Click += new System.EventHandler(this.btPrepare_Click);
+            this.btPrepare.Click += new System.EventHandler(this.BtPrepare_Click);
             // 
             // panel1
             // 
@@ -252,57 +267,64 @@
             this.panel1.Controls.Add(this.tbPass);
             this.panel1.Controls.Add(this.tbUser);
             this.panel1.Controls.Add(this.tbIp);
-            this.panel1.Location = new System.Drawing.Point(268, 108);
+            this.panel1.Location = new System.Drawing.Point(357, 133);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(254, 103);
+            this.panel1.Size = new System.Drawing.Size(339, 127);
             this.panel1.TabIndex = 12;
             // 
             // btConnect
             // 
-            this.btConnect.Location = new System.Drawing.Point(176, 36);
+            this.btConnect.Location = new System.Drawing.Point(235, 44);
+            this.btConnect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btConnect.Name = "btConnect";
-            this.btConnect.Size = new System.Drawing.Size(75, 23);
+            this.btConnect.Size = new System.Drawing.Size(100, 28);
             this.btConnect.TabIndex = 7;
             this.btConnect.Text = "Connect!";
             this.btConnect.UseVisualStyleBackColor = true;
-            this.btConnect.Click += new System.EventHandler(this.btConnect_Click);
+            this.btConnect.Click += new System.EventHandler(this.BtConnect_Click);
             // 
             // tbPass
             // 
-            this.tbPass.Location = new System.Drawing.Point(17, 64);
+            this.tbPass.Location = new System.Drawing.Point(23, 79);
+            this.tbPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbPass.Name = "tbPass";
-            this.tbPass.Size = new System.Drawing.Size(151, 20);
+            this.tbPass.Size = new System.Drawing.Size(200, 22);
             this.tbPass.TabIndex = 6;
             this.tbPass.Text = "rpcpassword";
             // 
             // tbUser
             // 
-            this.tbUser.Location = new System.Drawing.Point(17, 38);
+            this.tbUser.Location = new System.Drawing.Point(23, 47);
+            this.tbUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbUser.Name = "tbUser";
-            this.tbUser.Size = new System.Drawing.Size(151, 20);
+            this.tbUser.Size = new System.Drawing.Size(200, 22);
             this.tbUser.TabIndex = 5;
             this.tbUser.Text = "rpcuser";
             // 
             // tbIp
             // 
-            this.tbIp.Location = new System.Drawing.Point(17, 12);
+            this.tbIp.Location = new System.Drawing.Point(23, 15);
+            this.tbIp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbIp.Name = "tbIp";
-            this.tbIp.Size = new System.Drawing.Size(151, 20);
+            this.tbIp.Size = new System.Drawing.Size(200, 22);
             this.tbIp.TabIndex = 4;
             this.tbIp.Text = "ip:port";
             // 
             // tbLog
             // 
-            this.tbLog.Location = new System.Drawing.Point(12, 402);
+            this.tbLog.Location = new System.Drawing.Point(16, 495);
+            this.tbLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbLog.Multiline = true;
             this.tbLog.Name = "tbLog";
             this.tbLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbLog.Size = new System.Drawing.Size(868, 132);
+            this.tbLog.Size = new System.Drawing.Size(1156, 162);
             this.tbLog.TabIndex = 13;
             // 
             // nudSelect
             // 
-            this.nudSelect.Location = new System.Drawing.Point(416, 16);
+            this.nudSelect.Location = new System.Drawing.Point(555, 20);
+            this.nudSelect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nudSelect.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -314,7 +336,7 @@
             0,
             0});
             this.nudSelect.Name = "nudSelect";
-            this.nudSelect.Size = new System.Drawing.Size(61, 20);
+            this.nudSelect.Size = new System.Drawing.Size(81, 22);
             this.nudSelect.TabIndex = 14;
             this.nudSelect.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nudSelect.Value = new decimal(new int[] {
@@ -325,48 +347,52 @@
             // 
             // btSelect
             // 
-            this.btSelect.Location = new System.Drawing.Point(483, 12);
+            this.btSelect.Location = new System.Drawing.Point(644, 15);
+            this.btSelect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btSelect.Name = "btSelect";
-            this.btSelect.Size = new System.Drawing.Size(75, 23);
+            this.btSelect.Size = new System.Drawing.Size(100, 28);
             this.btSelect.TabIndex = 15;
             this.btSelect.Text = "Select";
             this.btSelect.UseVisualStyleBackColor = true;
-            this.btSelect.Click += new System.EventHandler(this.btSelect_Click);
+            this.btSelect.Click += new System.EventHandler(this.BtSelect_Click);
             // 
             // bdDeselect
             // 
-            this.bdDeselect.Location = new System.Drawing.Point(161, 12);
+            this.bdDeselect.Location = new System.Drawing.Point(215, 15);
+            this.bdDeselect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bdDeselect.Name = "bdDeselect";
-            this.bdDeselect.Size = new System.Drawing.Size(75, 23);
+            this.bdDeselect.Size = new System.Drawing.Size(100, 28);
             this.bdDeselect.TabIndex = 16;
             this.bdDeselect.Text = "Deselect all";
             this.bdDeselect.UseVisualStyleBackColor = true;
-            this.bdDeselect.Click += new System.EventHandler(this.bdDeselect_Click);
+            this.bdDeselect.Click += new System.EventHandler(this.BdDeselect_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(354, 21);
+            this.label4.Location = new System.Drawing.Point(472, 26);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 13);
+            this.label4.Size = new System.Drawing.Size(74, 17);
             this.label4.TabIndex = 17;
             this.label4.Text = "Select first";
             // 
             // btSelectAll
             // 
-            this.btSelectAll.Location = new System.Drawing.Point(242, 12);
+            this.btSelectAll.Location = new System.Drawing.Point(323, 15);
+            this.btSelectAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btSelectAll.Name = "btSelectAll";
-            this.btSelectAll.Size = new System.Drawing.Size(75, 23);
+            this.btSelectAll.Size = new System.Drawing.Size(100, 28);
             this.btSelectAll.TabIndex = 18;
             this.btSelectAll.Text = "Select all";
             this.btSelectAll.UseVisualStyleBackColor = true;
-            this.btSelectAll.Click += new System.EventHandler(this.btSelectAll_Click);
+            this.btSelectAll.Click += new System.EventHandler(this.BtSelectAll_Click);
             // 
-            // main
+            // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(892, 546);
+            this.ClientSize = new System.Drawing.Size(1189, 672);
             this.Controls.Add(this.btSelectAll);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.bdDeselect);
@@ -386,7 +412,8 @@
             this.Controls.Add(this.btSend);
             this.Controls.Add(this.btSign);
             this.Controls.Add(this.btGet);
-            this.Name = "main";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "Main";
             this.Text = "Rav3n_pl RPC Coin Control for any coin";
             ((System.ComponentModel.ISupportInitialize)(this.dgvIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOut)).EndInit();

@@ -9,14 +9,14 @@ using System.Windows.Forms;
 
 namespace CoinControl
 {
-    public partial class main : Form
+    public partial class Main : Form
     {
-        public main()
+        public Main()
         {
             InitializeComponent();
             dgvOut.Rows.Add("1Rav3nkMayCijuhzcYemMiPYsvcaiwHni", "0.01");
-            log("Fill IP:port, rpcuser and rpcpassword, press button.");
-            log("Small suggestion in outputs... :D");
+            Log("Fill IP:port, rpcuser and rpcpassword, press button.");
+            Log("Small suggestion in outputs... :D");
         }
         public string ip;
         public string rpcuser;
@@ -37,7 +37,7 @@ namespace CoinControl
 
             string s = "{\"jsonrpc\": \"1.0\", \"id\":\"Rav3nCoinControl\", \"method\": \"" + strCommand + "\", \"params\":[" + strParameters + "]}";
             byte[] byteArray = Encoding.UTF8.GetBytes(s);
-            log(s);
+            Log(s);
             webRequest.ContentLength = byteArray.Length;
             try
             {
@@ -57,28 +57,28 @@ namespace CoinControl
             }
             catch (System.Net.WebException e)
             {
-                    string strLog = DateTime.Now.ToString() + ": " + e.Message + Environment.NewLine;
-                    log(strLog);
-                    MessageBox.Show(strLog, "Communication Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    if (strResponse != "") { log(strResponse); }
+                string strLog = DateTime.Now.ToString() + ": " + e.Message + Environment.NewLine;
+                Log(strLog);
+                MessageBox.Show(strLog, "Communication Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (strResponse != "") { Log(strResponse); }
             }
 
             if (strResponse != string.Empty && strCommand != "listunspent")
             {
-                log(strResponse);
+                Log(strResponse);
             }
             return strResponse;
         }
 
 
-        private void btGet_Click(object sender, EventArgs e)
+        private void BtGet_Click(object sender, EventArgs e)
         {
             tbLog.Text = "";
-            log("Loading inputs, it might take a while...");
+            Log("Loading inputs, it might take a while...");
             btGet.Enabled = false;
             dgvIn.Hide();
             Application.DoEvents();
-            string resp = SendCommand("listunspent");
+            string resp = SendCommand("listunspent","0");
             if (resp != "")
             {
                 dynamic d = JsonConvert.DeserializeObject(resp);
@@ -87,23 +87,24 @@ namespace CoinControl
                 {
                     dgvIn.Rows.Add(false, i.amount, i.confirmations, i.address, i.txid, i.vout);
                 }
-                log("Data loaded. Sort inputs and choose!");
+                Log("Data loaded. Sort inputs and choose!");
             }
             else
             {
-                log("Oops!");
+                Log("Oops!");
             }
-            log("Loaded " + dgvIn.RowCount.ToString() + " inputs.");
+            Log("Loaded " + dgvIn.RowCount.ToString() + " inputs.");
             dgvIn.Show();
             btGet.Enabled = true;
         }
-        
-            
-        void log(string s)
+
+        private void Log(string s)
         {
+            tbLog.Visible = false;
             tbLog.Text = s + Environment.NewLine + tbLog.Text;
+            tbLog.Visible = true;
         }
-        private void btConnect_Click(object sender, EventArgs e)
+        private void BtConnect_Click(object sender, EventArgs e)
         {
             ip = "http://" + tbIp.Text;
             rpcuser = tbUser.Text;
@@ -115,27 +116,27 @@ namespace CoinControl
             }
             catch (Exception ex)
             {
-                log("Connection error!");
-                log(ex.Message.ToString());
+                Log("Connection error!");
+                Log(ex.Message.ToString());
             }
             finally
             {
                 if (resp != "")
                 {
-                    log(resp);
-                    log("Connected, now get inputs.");
+                    Log(resp);
+                    Log("Connected, now get inputs.");
                     panel1.Visible = false;
                 }
             }
         }
-    
-        private void btPrepare_Click(object sender, EventArgs e)
+
+        private void BtPrepare_Click(object sender, EventArgs e)
         {
             //przygotuj nie podpisaną tx do sprawdzenia: createrawtransaction [{"txid":txid,"vout":n},...] {address:amount,...}
             if (dgvOut.Rows[0].Cells[0].Value != null)
             {
                 btPrepare.Enabled = false;
-                log("Gathering data...");
+                Log("Gathering data...");
                 Application.DoEvents();
 
                 string i = " [";
@@ -160,40 +161,40 @@ namespace CoinControl
                         string addr = d.Cells[0].Value.ToString();
                         double am = Convert.ToDouble(d.Cells[1].Value.ToString());
                         string amou = String.Format(CultureInfo.InvariantCulture, "{0:0.00000000}", am);
-                        i += "\""+addr +"\":" + amou + ",";
+                        i += "\"" + addr + "\":" + amou + ",";
                     }
                 }
                 i = i.Remove(i.Length - 1); //kill last ","
                 i += "} ";
-                log("tx:");
-                log(i);
-                log("Creating transaction on daemon, please be patient...");
+                Log("tx:");
+                Log(i);
+                Log("Creating transaction on daemon, please be patient...");
                 Application.DoEvents();
                 string resp = SendCommand("createrawtransaction", i);
                 if (resp != "")
                 {
                     dynamic dy = JsonConvert.DeserializeObject(resp);
                     hextx = dy.result;
-                    log(resp);
-                    log("Transaction created, now sign it!");
+                    Log(resp);
+                    Log("Transaction created, now sign it!");
                 }
                 else
                 {
-                    log("Error! Check addresses, amounts. Maybe bigger fee need?");
+                    Log("Error! Check addresses, amounts. Maybe bigger fee need?");
                 }
                 btPrepare.Enabled = true;
             }
             else
             {
-                log("No output address data!");
+                Log("No output address data!");
             }
         }
-        
 
-        private void btSign_Click(object sender, EventArgs e)
+
+        private void BtSign_Click(object sender, EventArgs e)
         {
             //wyślij do podpisu: signrawtransaction <hexstring> [{"txid":txid,"vout":n,"scriptPubKey":hex},...] [<privatekey1>,...]
-            log("Sending TX to sign by daemon...");
+            Log("Sending TX to sign by daemon...");
             btSign.Enabled = false;
             Application.DoEvents();
             string resp = SendCommand("signrawtransaction", "\"" + hextx + "\"");
@@ -201,19 +202,19 @@ namespace CoinControl
             {
                 dynamic dy = JsonConvert.DeserializeObject(resp);
                 signtx = dy.result.hex;
-                log("Transaction signed, now send it!");
+                Log("Transaction signed, now send it!");
             }
             else
             {
-                log("Oops! Try again?");
+                Log("Oops! Try again?");
             }
             btSign.Enabled = true;
         }
 
-        private void btSend_Click(object sender, EventArgs e)
+        private void BtSend_Click(object sender, EventArgs e)
         {
             //wyślij podpisaną sendrawtransaction <hexstring>
-            log("Sending TX to network...");
+            Log("Sending TX to network...");
             btSend.Enabled = false;
             Application.DoEvents();
             string resp = SendCommand("sendrawtransaction", "\"" + signtx + "\"");
@@ -221,18 +222,18 @@ namespace CoinControl
             {
                 dynamic dy = JsonConvert.DeserializeObject(resp);
                 string txid = dy.result;
-                log("Transaction sent, TXID: " + txid);
-                log("Clearing input list.");
+                Log("Transaction sent, TXID: " + txid);
+                Log("Clearing input list.");
                 dgvIn.Rows.Clear();
             }
             else
             {
-                log("Oops! Try again?");
+                Log("Oops! Try again?");
             }
             btSend.Enabled = true;
         }
 
-        private void dgvIn_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void DgvIn_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             //obsługa klika na checkbox
             if (e.ColumnIndex == 0 && e.RowIndex != -1)
@@ -240,7 +241,7 @@ namespace CoinControl
                 double amount = 0;
                 foreach (DataGridViewRow d in dgvIn.Rows)
                 {
-                    if (Convert.ToBoolean(d.Cells[0].Value)==true)
+                    if (Convert.ToBoolean(d.Cells[0].Value) == true)
                     {
                         amount += Convert.ToDouble(d.Cells[1].Value);
                     }
@@ -251,7 +252,7 @@ namespace CoinControl
         }
 
 
-        private void dgvIn_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        private void DgvIn_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
             //po kliku odpal koniec edycji
             if (e.ColumnIndex == 0 && e.RowIndex != -1)
@@ -260,7 +261,7 @@ namespace CoinControl
             }
         }
 
-        private void dgvOut_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void DgvOut_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             //zmiana danych
             double amount = 0;
@@ -268,37 +269,41 @@ namespace CoinControl
             {
                 if (d.Cells[1].Value != null)
                 {
-                    double add = 0;
                     string s = d.Cells[1].Value.ToString();
-                    Double.TryParse(s, out add);
+                    Double.TryParse(s, out double add);
                     if (add > 0) { amount += add; }
-                    else { log("Incorrect value in output?"); }
+                    else { Log("Incorrect value in output?"); }
                 }
             }
             tbOut.Text = amount.ToString();
             tbFee.Text = String.Format(CultureInfo.InvariantCulture, "{0:0.00000000}", (Convert.ToDouble(tbSent.Text) - Convert.ToDouble(tbOut.Text)).ToString());
         }
 
-        private void bdDeselect_Click(object sender, EventArgs e)
+        private void BdDeselect_Click(object sender, EventArgs e)
         {
-            foreach(DataGridViewRow d in dgvIn.Rows)
+            dgvIn.Visible = false;
+            foreach (DataGridViewRow d in dgvIn.Rows)
             {
                 if (Convert.ToBoolean(d.Cells[0].Value) == true)
-                { d.Cells[0].Value =false; }
+                { d.Cells[0].Value = false; }
             }
+            dgvIn.Visible = true;
         }
 
-        private void btSelectAll_Click(object sender, EventArgs e)
+        private void BtSelectAll_Click(object sender, EventArgs e)
         {
+            dgvIn.Visible = false;
             foreach (DataGridViewRow d in dgvIn.Rows)
             {
                 if (Convert.ToBoolean(d.Cells[0].Value) == false)
                 { d.Cells[0].Value = true; }
             }
+            dgvIn.Visible = true;
         }
 
-        private void btSelect_Click(object sender, EventArgs e)
+        private void BtSelect_Click(object sender, EventArgs e)
         {
+            dgvIn.Visible = false;
             int cnt = 0;
             foreach (DataGridViewRow d in dgvIn.Rows)
             {
@@ -309,6 +314,7 @@ namespace CoinControl
                 }
                 if (cnt >= nudSelect.Value) { break; }
             }
+            dgvIn.Visible = true;
         }
     }
 }
